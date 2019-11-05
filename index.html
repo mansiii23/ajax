@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>ajax example</title>
+    </head>
+    <body>
+        <div>
+                <button onclick="loadDoc()" >I am the magic button</button> 
+        </div>
+        <p id="demo"></p>
+
+        <script>
+            function loadDoc(){
+                var xhttp=new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("demo").innerHTML = 
+                        this.responseText;
+                        console.log(this.responseText);
+                    }
+                };
+                xhttp.open("GET", "https://reqres.in/api/users/2", true);
+                xhttp.send();
+            }
+        </script>
+    </body>
+</html>
